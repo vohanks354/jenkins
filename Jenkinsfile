@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        docker {image 'node:14-alpine'}
+        docker {image 'mysql:5.7'}
     }
     stages{
         stage("Stage Docker"){
