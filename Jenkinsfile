@@ -3,17 +3,19 @@ pipeline {
     environment {
         GOCACHE = '/tmp/gocache'
         def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin"
+        // env.PATH = "${dockerHome}/bin"
     }
     stages {
         stage('build') {
             steps {
-                sh 'go build'
+                echo "PATH ${env.PATH}"
+                // sh 'go build'
             }
         }
         stage('test') {
             steps {
-                sh 'go test ./...'
+                echo "PATH is: ${env.PATH}"
+                // sh 'go test ./...'
             }
         }
     }
