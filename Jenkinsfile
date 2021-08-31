@@ -2,6 +2,9 @@ pipeline{
     agent {
         docker { image 'node:14-alpine' }
     }
+    environment {
+        PATH = "$PATH:/usr/local/bin"
+    }
     stages{
         stage("Stage Docker"){
             steps{
