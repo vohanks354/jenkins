@@ -1,24 +1,12 @@
 pipeline{
-    agent any
-    environment{
-        // Using returnStdout
-        CC = """${sh(
-                returnStdout: true,
-                script: 'echo "clang"'
-            )}""" 
-        // Using returnStatus
-        EXIT_STATUS = """${sh(
-                returnStatus: true,
-                script: 'exit 1'
-            )}"""
+    agent {
+        docker {image 'node:14-alpine'}
     }
     stages{
-        stage("Example"){
-            environment{
-                DEBUG_FLAGS = '-g'
-            }
+        stage("Stage Docker"){
             steps{
-                sh 'printenv'
+                echo "========executing A========"
+                sh 'node --version'
             }
             post{
                 always{
@@ -31,6 +19,17 @@ pipeline{
                     echo "========A execution failed========"
                 }
             }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
         }
     }
 }
