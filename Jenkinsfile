@@ -1,38 +1,18 @@
-pipeline{
-    agent {
-        docker { image 'node:14-alpine' }
-    }
+pipeline {
+    agent { docker { image 'golang:1.14' } }
     environment {
-        PATH = "$PATH:/usr/local/bin"
+        GOCACHE = '/tmp/gocache'
     }
-    stages{
-        stage("Stage Docker"){
-            steps{
-                echo "========executing A========"
-                sh 'node --version'
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+    stages {
+        stage('build') {
+            steps {
+                sh 'go build'
             }
         }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
+        stage('test') {
+            steps {
+                sh 'go test ./...'
+            }
         }
     }
 }
