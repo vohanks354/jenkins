@@ -1,35 +1,35 @@
 pipeline {
-    agent none
-    stages {
-        stage('build and test') {
-            agent { docker { image 'golang:1.14' } }
-            environment {
-                GOCACHE = '/tmp/gocache'
-            }
-            steps {
-                sh 'go build'
-                sh 'go test ./...'
-            }
+  // Assign to docker slave(s) label, could also be 'any'
+  agent any
+
+  stages {
+    stage('Docker node test') {
+      agent {
+        docker {
+          // Set both label and image
+          label 'docker'
+          image 'node:7-alpine'
+          args '--name docker-node' // list any args
         }
-        stage('deploy') {
-            agent any
-            environment {
-                BUILD_NUMBER_BASE = '0'
-                VERSION_MAJOR = '0'
-                VERSION_MINOR = '1'
-                VERSION_PATCH = "${env.BUILD_NUMBER.toInteger() - BUILD_NUMBER_BASE.toInteger()}"
-            }
-            when {
-                branch 'master'
-            }
-            steps {
-                script {
-                    docker.withRegistry('', 'docker-hub') {
-                        def customImage = docker.build("sckmkny/hello-jenkins:$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH")
-                        customImage.push()
-                    }
-                }
-            }
-        }
+      }
+      steps {
+        // Steps run in node:7-alpine docker container on docker slave
+        sh 'node --version'
+      }
     }
-}
+
+    stage('Docker maven test') {
+      agent {
+        docker {
+          // Set both label and image
+          label 'docker'
+          image 'maven:3-alpine'
+        }
+      }
+      steps {
+        // Steps run in maven:3-alpine docker container on docker slave
+        sh 'mvn --version'
+      }
+    }
+  }
+} 
