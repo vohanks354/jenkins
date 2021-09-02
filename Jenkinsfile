@@ -24,6 +24,10 @@ node{
     stage('Function'){
         namaOrang('Openshift')
     }
+
+    stage('install npm'){
+        sh 'npm install'
+    }
 }
 
 def namaOrang(person){
