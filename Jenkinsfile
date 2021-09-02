@@ -30,10 +30,10 @@ node{
     }
 
     stage('Install Dependencies') {
-        sh 'npm c'
+        sh 'npm install'
     }
     stage('Unit Test') {
-        sh 'npm test'
+        sh 'npm run build'
     }
 }
 
