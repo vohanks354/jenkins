@@ -6,7 +6,7 @@ node{
     }
 
     stage('If'){
-        if (env.BRANCH_NAME = 'main'){
+        if (env.BRANCH_NAME == 'main'){
             echo 'branch main'
         } else {
             echo 'branch another'
