@@ -28,6 +28,13 @@ node{
     stage('install npm'){
         sh 'docker --version'
     }
+
+    stage('Install Dependencies') {
+        sh 'npm ci'
+    }
+    stage('Unit Test') {
+        sh 'npm test'
+    }
 }
 
 def namaOrang(person){
