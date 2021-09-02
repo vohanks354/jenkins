@@ -1,5 +1,6 @@
 String person = 'kirom'
 def anotherperson = 'ricard'
+def people = ['satu','dua', 'tiga']
 node{
     stage('Hello'){
         echo "Hello ${person} and ${anotherperson}"
@@ -12,5 +13,11 @@ node{
             echo 'branch another'
         }
 
+    }
+
+    stage('Looping'){
+        for(i = 0; i < people.size(); i++){
+            echo "hello ${people[i]}"
+        }
     }
 }
