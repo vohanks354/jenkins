@@ -26,7 +26,7 @@ node{
     }
 
     stage('install npm'){
-        sh 'npm install'
+        sh 'docker --version'
     }
 }
 
