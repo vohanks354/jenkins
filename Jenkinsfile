@@ -20,4 +20,12 @@ node{
             echo "hello ${people[i]}"
         }
     }
+
+    stage('Function'){
+        namaOrang('Openshift')
+    }
+}
+
+def namaOrang(person){
+    echo "${person}"
 }
