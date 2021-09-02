@@ -1,20 +1,16 @@
-pipeline {
-  // Assign to docker slave(s) label, could also be 'any'
-  agent any
-
-  stages {
-    stage('Docker node test') {
-      agent {
-        docker {
-          // Set both label and image
-          image 'node:7-alpine'
-          args '--name docker-node' // list any args
-        }
-      }
-      steps {
-        // Steps run in node:7-alpine docker container on docker slave
-        sh 'node --version'
-      }
+String person = 'kirom'
+def anotherperson = 'ricard'
+node{
+    stage('Hello'){
+        echo "Hello ${person} and ${anotherperson}"
     }
-  }
-} 
+
+    stage('If'){
+        if (env.BRANCH_NAME = 'main'){
+            echo 'branch main'
+        } else {
+            echo 'branch another'
+        }
+
+    }
+}
