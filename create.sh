@@ -7,6 +7,7 @@ oc delete bc/app-kirom
 oc delete dc/app-kirom
 oc delete svc/app-kirom
 oc delete route/app-kirom
+oc delete bc/db-kirom
 oc delete dc/db-kirom
 oc delete svc/db-kirom
 oc delete pvc/db-kirom-claim
