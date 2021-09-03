@@ -1,5 +1,5 @@
 node{
-    stage('Create Project'){
-        sh 'oc new-project mgs-jenkins-red'
+    stage('Create App'){
+        sh 'oc new-app kirom-template'
     }
 }
