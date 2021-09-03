@@ -127,6 +127,46 @@ objects:
 #----------------------------------------------------------------#
 # MySQL 
 #----------------------------------------------------------------#
+- kind: ImageStream
+  apiVersion: image.openshift.io/v1
+  metadata:
+    annotations:
+    labels:
+      app: ${APP_NAME_DB}
+    name: ${APP_NAME_DB}
+  spec:
+    lookupPolicy:
+      local: false
+- kind: "BuildConfig"
+  apiVersion: build.openshift.io/v1
+  metadata:
+    name: ${APP_NAME_DB}
+    labels:
+      app: ${APP_NAME_DB}
+  spec:
+    runPolicy: "Serial" 
+    triggers: 
+      -
+        type: "GitHub"
+        github:
+          secret: ${SECRET}
+      - type: "Generic"
+        generic:
+          secret: ${SECRET}
+      -
+        type: "ImageChange"
+    source: 
+      git:
+        # uri: "https://github.com/tsrana/spring-boot-hello-world"
+        uri: ${APP_GIT_URL}
+    strategy:
+      type: Docker
+      dockerStrategy:
+        dockerfilePath: Dockerfile    
+    output: 
+      to:
+        kind: "ImageStreamTag"
+        name: ${APP_NAME_DB}:latest
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
