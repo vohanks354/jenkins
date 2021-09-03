@@ -248,7 +248,7 @@ parameters:
   displayName: Application Source Git URL
   description: The Git URL of the application source code
   required: true
-  value: https://github.com/vohanks354/kiromTest
+  value: https://github.com/vohanks354/jenkins
 - name: DATABASE_SERVICE_NAME
   displayName: Database Service Name
   description: name service of database
