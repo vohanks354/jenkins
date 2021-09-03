@@ -1,5 +1,5 @@
 node{
     stage('Create template'){
-        sh 'create.sh'
+        sh './create.sh'
     }
 }
