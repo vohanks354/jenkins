@@ -1,7 +1,6 @@
 node{
     stage('Create template'){
-        sh '''
-            #!/bin/bash
+        sh '''#!/bin/bash
             ./create.sh
             '''
     }
