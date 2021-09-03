@@ -2,7 +2,7 @@
 
 oc delete template kirom-php-mysql-template
 oc delete imagestreams app-kirom
-oc delete imagestreams db-mysql
+oc delete imagestreams db-kirom
 oc delete bc/app-kirom
 oc delete dc/app-kirom
 oc delete svc/app-kirom
