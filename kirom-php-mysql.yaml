@@ -160,9 +160,13 @@ objects:
         # uri: "https://github.com/tsrana/spring-boot-hello-world"
         uri: ${APP_GIT_URL}
     strategy:
-      type: Docker
       dockerStrategy:
-        dockerfilePath: Dockerfile    
+        from:
+          kind: "ImageStreamTag"
+          name: "mgs-mysql:5.7"
+      # type: Docker
+      # dockerStrategy:
+      #   dockerfilePath: Dockerfile    
     output: 
       to:
         kind: "ImageStreamTag"
