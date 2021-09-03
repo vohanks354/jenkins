@@ -156,17 +156,13 @@ objects:
       -
         type: "ImageChange"
     source: 
+      type: git
       git:
-        # uri: "https://github.com/tsrana/spring-boot-hello-world"
         uri: ${APP_GIT_URL}
+      dockerfile: |
+        FROM vohank354/mgs-mysql:5.7
     strategy:
-      dockerStrategy:
-        from:
-          kind: "ImageStreamTag"
-          name: "mgs-mysql:5.7"
-      # type: Docker
-      # dockerStrategy:
-      #   dockerfilePath: Dockerfile    
+      type: Docker
     output: 
       to:
         kind: "ImageStreamTag"
@@ -240,7 +236,7 @@ objects:
         - ${APP_NAME_DB}
         from:
           kind: ImageStreamTag
-          name: db-mysql:latest
+          name: ${APP_NAME}:latest
           # namespace: openshift
       type: ImageChange
 - apiVersion: v1
