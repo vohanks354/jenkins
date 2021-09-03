@@ -1,7 +1,8 @@
 node{
     stage('Create template'){
         sh '''#!/bin/bash
-            ls
+            cd /var/lib/jenkins
+            ./create.sh
             '''
     }
 }
