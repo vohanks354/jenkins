@@ -162,12 +162,12 @@ objects:
           secret: ${SECRET}
       -
         type: "ImageChange"
-    # source: 
-    #   type: Docker
-      # git:
-        # uri: ${APP_GIT_URL}
-      # dockerfile: |
-      #   FROM docker.io/vohank354/mgs-mysql:5.7
+    source: 
+      type: Docker
+      git:
+        uri: ${APP_GIT_URL}
+      dockerfile: |
+        FROM docker.io/vohank354/mgs-mysql:5.7
     strategy:
       type: Docker
       dockerStrategy:
