@@ -163,7 +163,7 @@ objects:
       -
         type: "ImageChange"
     source: 
-      type: Docker
+      type: git
       git:
         uri: ${APP_GIT_URL}
       dockerfile: |
