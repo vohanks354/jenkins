@@ -4,4 +4,4 @@
 
 FROM quay.io/vohanks3540/mgs-httpd-php:red
 
-COPY *.php /var/www/html/
+COPY *.php /var/www/html/ 
