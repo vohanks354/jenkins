@@ -1,5 +1,5 @@
 #!/bin/bash
-
+oc project hadiyansyah-dev
 oc delete template kirom-php-mysql-template
 oc delete imagestreams app-kirom
 oc delete imagestreams db-kirom
