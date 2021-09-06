@@ -144,8 +144,8 @@ objects:
         name: vohank354/mgs-mysql:5.7
       referencePolicy:
         type: Source
-- kind: "BuildConfig"
-  apiVersion: build.openshift.io/v1
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
   metadata:
     name: ${APP_NAME_DB}
     labels:
@@ -166,8 +166,6 @@ objects:
       type: git
       git:
         uri: ${APP_GIT_URL}
-      dockerfile: |
-        FROM docker.io/vohank354/mgs-mysql:5.7
     strategy:
       type: Docker
       dockerStrategy:
