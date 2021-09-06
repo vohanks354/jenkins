@@ -136,44 +136,49 @@ objects:
     name: ${APP_NAME_DB}
   spec:
     lookupPolicy:
-      local: true
+      local: false
     tags:
       name: ${APP_NAME_DB}:latest
       from:
         kind: DockerImage
-        name: docker.io/vohank354/mgs-mysql:5.7
+        name: vohank354/mgs-mysql:5.7
       referencePolicy:
         type: Source
-# - kind: "BuildConfig"
-#   apiVersion: build.openshift.io/v1
-#   metadata:
-#     name: ${APP_NAME_DB}
-#     labels:
-#       app: ${APP_NAME_DB}
-#   spec:
-#     runPolicy: "Serial" 
-#     triggers: 
-#       -
-#         type: "GitHub"
-#         github:
-#           secret: ${SECRET}
-#       - type: "Generic"
-#         generic:
-#           secret: ${SECRET}
-#       -
-#         type: "ImageChange"
-#     source: 
-#       type: Docker
-#       # git:
-#         # uri: ${APP_GIT_URL}
-#       dockerfile: |
-#         FROM docker.io/vohank354/mgs-mysql:5.7
-#     strategy:
-#       type: Docker
-#     output: 
-#       to:
-#         kind: "ImageStreamTag"
-#         name: ${APP_NAME_DB}:latest
+- kind: "BuildConfig"
+  apiVersion: build.openshift.io/v1
+  metadata:
+    name: ${APP_NAME_DB}
+    labels:
+      app: ${APP_NAME_DB}
+  spec:
+    runPolicy: "Serial" 
+    triggers: 
+      -
+        type: "GitHub"
+        github:
+          secret: ${SECRET}
+      - type: "Generic"
+        generic:
+          secret: ${SECRET}
+      -
+        type: "ImageChange"
+    # source: 
+    #   type: Docker
+      # git:
+        # uri: ${APP_GIT_URL}
+      # dockerfile: |
+      #   FROM docker.io/vohank354/mgs-mysql:5.7
+    strategy:
+      type: Docker
+      dockerStrategy:
+        dockerfilePath: Dockerfile
+        from:
+          kind: ImageStreamTag       # Use an imagestream tag as 'FROM'
+          name: ${APP_NAME_DB}:latest  
+    output: 
+      to:
+        kind: ImageStreamTag
+        name: ${APP_NAME_DB}-1:latest
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
