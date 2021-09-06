@@ -136,12 +136,12 @@ objects:
     name: ${APP_NAME_DB}
   spec:
     lookupPolicy:
-      local: false
+      local: true
     tags:
       name: ${APP_NAME_DB}:latest
       from:
         kind: DockerImage
-        name: vohank354/mgs-mysql:5.7
+        name: docker.io/vohank354/mgs-mysql:5.7
       referencePolicy:
         type: Source
 # - kind: "BuildConfig"
