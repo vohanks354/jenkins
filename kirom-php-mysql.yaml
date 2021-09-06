@@ -156,9 +156,9 @@ objects:
       -
         type: "ImageChange"
     source: 
-      type: git
-      git:
-        uri: ${APP_GIT_URL}
+      type: Docker
+      # git:
+        # uri: ${APP_GIT_URL}
       dockerfile: |
         FROM docker.io/vohank354/mgs-mysql:5.7
     strategy:
