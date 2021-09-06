@@ -127,8 +127,8 @@ objects:
 #----------------------------------------------------------------#
 # MySQL 
 #----------------------------------------------------------------#
-- kind: ImageStream
-  apiVersion: image.openshift.io/v1
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
   metadata:
     annotations:
     labels:
@@ -137,36 +137,43 @@ objects:
   spec:
     lookupPolicy:
       local: false
-- kind: "BuildConfig"
-  apiVersion: build.openshift.io/v1
-  metadata:
-    name: ${APP_NAME_DB}
-    labels:
-      app: ${APP_NAME_DB}
-  spec:
-    runPolicy: "Serial" 
-    triggers: 
-      -
-        type: "GitHub"
-        github:
-          secret: ${SECRET}
-      - type: "Generic"
-        generic:
-          secret: ${SECRET}
-      -
-        type: "ImageChange"
-    source: 
-      type: Docker
-      # git:
-        # uri: ${APP_GIT_URL}
-      dockerfile: |
-        FROM docker.io/vohank354/mgs-mysql:5.7
-    strategy:
-      type: Docker
-    output: 
-      to:
-        kind: "ImageStreamTag"
-        name: ${APP_NAME_DB}:latest
+    tags:
+      name: ${APP_NAME_DB}:latest
+      from:
+        kind: DockerImage
+        name: vohank354/mgs-mysql:5.7
+      referencePolicy:
+        type: Source
+# - kind: "BuildConfig"
+#   apiVersion: build.openshift.io/v1
+#   metadata:
+#     name: ${APP_NAME_DB}
+#     labels:
+#       app: ${APP_NAME_DB}
+#   spec:
+#     runPolicy: "Serial" 
+#     triggers: 
+#       -
+#         type: "GitHub"
+#         github:
+#           secret: ${SECRET}
+#       - type: "Generic"
+#         generic:
+#           secret: ${SECRET}
+#       -
+#         type: "ImageChange"
+#     source: 
+#       type: Docker
+#       # git:
+#         # uri: ${APP_GIT_URL}
+#       dockerfile: |
+#         FROM docker.io/vohank354/mgs-mysql:5.7
+#     strategy:
+#       type: Docker
+#     output: 
+#       to:
+#         kind: "ImageStreamTag"
+#         name: ${APP_NAME_DB}:latest
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
