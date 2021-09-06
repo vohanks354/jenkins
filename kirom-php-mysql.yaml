@@ -138,7 +138,7 @@ objects:
     lookupPolicy:
       local: false
     tags:
-      name: ${APP_NAME_DB}:latest
+      name: latest
       from:
         kind: DockerImage
         name: vohank354/mgs-mysql:5.7
