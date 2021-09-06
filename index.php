@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CRUD PHP PAKE OPENSHIFT</title>
+	<title>CRUD PHP PAKE OPENSHIFT DAN JENKINS</title>
 </head>
 <body>
 
