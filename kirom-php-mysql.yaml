@@ -268,7 +268,7 @@ objects:
     resources:
       requests:
         storage: 300Mi
-    storageClassName: standard
+    storageClassName: gp2
     volumeMode: Filesystem
 #----------------------------------------------------------------#
 # Parameter
