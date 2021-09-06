@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CRUD PHP PAKE OPENSHIFT DAN JENKINS</title>
+	<title>CRUD PHP PAKE OPENSHIFT</title>
 </head>
 <body>
 
-	<h2>FORM DATA TEMAN</h2>
+	<h2>CRUD OPENSHIFT & JENKINS</h2>
 	<br/>
 	<a href="tambah.php">+ TAMBAH TEMAN</a>
 	<br/>
