@@ -160,7 +160,7 @@ objects:
       git:
         uri: ${APP_GIT_URL}
       dockerfile: |
-        FROM vohank354/mgs-mysql:5.7
+        FROM docker.io/vohank354/mgs-mysql:5.7
     strategy:
       type: Docker
     output: 
