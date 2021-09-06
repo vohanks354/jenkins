@@ -141,7 +141,7 @@ objects:
       name: latest
       from:
         kind: DockerImage
-        name: vohank354/mgs-mysql:5.7
+        name: vohank354/mgs-mysql
       referencePolicy:
         type: Source
 - apiVersion: build.openshift.io/v1
