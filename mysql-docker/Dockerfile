@@ -4,7 +4,7 @@
 
 FROM quay.io/vohanks3540/mgs-mysql:5.7
 
-COPY ../*.sql /tmp
+COPY *.sql /tmp
 WORKDIR /tmp
 
 CMD mysql -uuser -ppass < *.sql
