@@ -133,16 +133,6 @@ objects:
     labels:
       app: ${APP_NAME_DB}
     name: ${APP_NAME_DB}
-  spec:
-    lookupPolicy:
-      local: false
-    tags:
-      name: latest
-      from:
-        kind: DockerImage
-        name: vohank354/mgs-mysql
-      referencePolicy:
-        type: Source
 - apiVersion: build.openshift.io/v1
   kind: BuildConfig
   metadata:
