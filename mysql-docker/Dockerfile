@@ -4,7 +4,7 @@
 
 FROM quay.io/vohanks3540/mgs-mysql:5.7
 
-COPY *.sql /tmp
+COPY create-table.sql /tmp
 WORKDIR /tmp
 
-CMD mysql -uuser -ppass < *.sql
+CMD mysql -uuser -ppass < create-table.sql
