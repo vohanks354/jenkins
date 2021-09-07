@@ -151,7 +151,6 @@ objects:
     #       secret: ${SECRET}
     #   -
     #     type: "ImageChange"
-    spec:
     source: 
       git:
         uri: ${APP_GIT_URL}
