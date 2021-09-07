@@ -7,7 +7,7 @@
 
 	<h2>CRUD OPENSHIFT & JENKINS</h2>
 	<br/>
-	<a href="tambah.php">+ TAMBAH TEMAN</a>
+	<a href="tambah.php">ADD</a>
 	<br/>
 	<br/>
 	<table border="1">
