@@ -33,7 +33,6 @@ objects:
         type: "ImageChange"
     source: 
       git:
-        # uri: "https://github.com/tsrana/spring-boot-hello-world"
         uri: ${APP_GIT_URL}
     strategy:
       type: Docker
@@ -152,31 +151,29 @@ objects:
       app: ${APP_NAME_DB}
   spec:
     runPolicy: "Serial" 
-    triggers: 
-      -
-        type: "GitHub"
-        github:
-          secret: ${SECRET}
-      - type: "Generic"
-        generic:
-          secret: ${SECRET}
-      -
-        type: "ImageChange"
+    # triggers: 
+    #   -
+    #     type: "GitHub"
+    #     github:
+    #       secret: ${SECRET}
+    #   - type: "Generic"
+    #     generic:
+    #       secret: ${SECRET}
+    #   -
+    #     type: "ImageChange"
+    spec:
     source: 
-      type: git
       git:
         uri: ${APP_GIT_URL}
+      contextDir: mysql-docker
     strategy:
       type: Docker
       dockerStrategy:
-        dockerfilePath: Dockerfile
-        from:
-          kind: ImageStreamTag       # Use an imagestream tag as 'FROM'
-          name: ${APP_NAME_DB}:latest  
+        dockerfilePath: Dockerfile    
     output: 
       to:
-        kind: ImageStreamTag
-        name: ${APP_NAME_DB}-1:latest
+        kind: "ImageStreamTag"
+        name: ${APP_NAME_DB}:latest
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
