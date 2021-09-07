@@ -6,3 +6,4 @@ nama VARCHAR(30) NOT NULL
 );
 
 insert into namateman(nama) values ('kirom');
+insert into namateman(nama) values ('oliv');
