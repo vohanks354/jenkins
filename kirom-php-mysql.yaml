@@ -216,7 +216,7 @@ objects:
         - ${APP_NAME_DB}
         from:
           kind: ImageStreamTag
-          name: ${APP_NAME}:latest
+          name: ${APP_NAME_DB}:latest
           # namespace: openshift
       type: ImageChange
 - apiVersion: v1
