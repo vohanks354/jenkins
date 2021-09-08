@@ -30,7 +30,7 @@ objects:
       - type: "Generic"
         generic:
           secret: ${SECRET}
-      - type: "ImageChange"
+      - type: "ConfigChange"
       - imageChangeParams:
           automatic: true 
     source: 
@@ -151,7 +151,7 @@ objects:
     #     generic:
     #       secret: ${SECRET}
     #   -
-      - type: "ImageChange"
+      - type: "ConfigChange"
       - imageChangeParams:
           automatic: true 
     source: 
