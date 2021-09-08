@@ -21,13 +21,16 @@ pipeline {
         stage("Remove Old") {
             steps {
                 script{
-                    // try{
                     sh 'oc delete all -l app=app-kirom'
                     sh 'oc delete all -l app=db-kirom'
-                    // }
-                    // catch(exeption ex){
-                        // sh 'echo app not found'
-                    // }
+                }
+            }
+        }
+        stage("Build App") {
+            steps {
+                script{
+                    sh 'oc '
+                    sh 'oc delete all -l app=db-kirom'
                 }
             }
         }
