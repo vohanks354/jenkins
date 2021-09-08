@@ -6,9 +6,10 @@ pipeline {
         STAGE_TAG = "promoteToQA"
         DEV_PROJECT = "dev"
         STAGE_PROJECT = "stage"
-        TEMPLATE_NAME = "php-apache"
+        TEMPLATE_NAME = "kirom-php-mysql-template"
         ARTIFACT_FOLDER = "target"
-        PORT = 8082;
+        PORT = 8082
+        YAML_FILE = "kirom-php-mysql.yaml";
     }
 
     agent any
@@ -23,14 +24,15 @@ pipeline {
                 script{
                     sh 'oc delete all -l app=app-kirom'
                     sh 'oc delete all -l app=db-kirom'
+                    sh 'oc delete template -l app=app-kirom'
                 }
             }
         }
         stage("Build App") {
             steps {
                 script{
-                    sh 'oc '
-                    sh 'oc delete all -l app=db-kirom'
+                    sh "oc create -f ${YAML_FILE}"
+                    sh "oc new-app ${TEMPLATE_NAME}"
                 }
             }
         }

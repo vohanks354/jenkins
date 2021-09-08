@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: kirom-php-mysql-template
   labels: 
-    app: ${APP_NAME}
+    app: "app-kirom"
 objects:
 - kind: ImageStream
   apiVersion: image.openshift.io/v1
