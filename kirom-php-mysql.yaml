@@ -256,19 +256,24 @@ objects:
       deploymentconfig: ${APP_NAME_DB}
     sessionAffinity: None
     type: ClusterIP
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    annotations:
-    name: ${APP_NAME_DB}-claim
-  spec:
-    accessModes:
-    - ReadWriteOnce
-    resources:
-      requests:
-        storage: 300Mi
-    storageClassName: gp2
-    volumeMode: Filesystem
+#----------------------------------------------------------------#
+# Sementara di block dulu                                        #
+#----------------------------------------------------------------#
+# - apiVersion: v1
+#   kind: PersistentVolumeClaim
+#   metadata:
+#     annotations:
+#     name: ${APP_NAME_DB}-claim
+#   spec:
+#     accessModes:
+#     - ReadWriteOnce
+#     resources:
+#       requests:
+#         storage: 300Mi
+#     storageClassName: gp2
+#     volumeMode: Filesystem
+
+
 #----------------------------------------------------------------#
 # Parameter
 #----------------------------------------------------------------#
