@@ -80,7 +80,7 @@ objects:
     replicas: 1 
     triggers:
       - type: "ImageChange" 
-      - imageChangeParams:
+        imageChangeParams:
           automatic: true
           containerNames:
             - ${APP_NAME}
