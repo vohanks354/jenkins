@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        APPLICATION_NAME = 'php-apache'
+        APPLICATION_NAME = "php-apache"
         GIT_REPO="https://github.com/vohanks354/jenkins.git"
         GIT_BRANCH="master"
         STAGE_TAG = "promoteToQA"
