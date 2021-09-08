@@ -24,15 +24,15 @@ objects:
   spec:
     runPolicy: "Serial" 
     triggers: 
-      -
-        type: "GitHub"
+      - type: "GitHub"
         github:
           secret: ${SECRET}
       - type: "Generic"
         generic:
           secret: ${SECRET}
-      -
-        type: "ImageChange"
+      - type: "ImageChange"
+      - imageChangeParams:
+          automatic: true 
     source: 
       git:
         uri: ${APP_GIT_URL}
@@ -80,7 +80,7 @@ objects:
     replicas: 1 
     triggers:
       - type: "ImageChange" 
-        imageChangeParams:
+      - imageChangeParams:
           automatic: true
           containerNames:
             - ${APP_NAME}
@@ -152,7 +152,7 @@ objects:
     #       secret: ${SECRET}
     #   -
       - type: "ImageChange"
-        imageChangeParams:
+      - imageChangeParams:
           automatic: true 
     source: 
       git:
