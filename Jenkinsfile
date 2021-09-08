@@ -22,9 +22,9 @@ pipeline {
         stage("Remove Old") {
             steps {
                 script{
+                    sh 'oc delete template -l app=app-kirom'
                     sh 'oc delete all -l app=app-kirom'
                     sh 'oc delete all -l app=db-kirom'
-                    sh 'oc delete template -l app=app-kirom'
                 }
             }
         }
