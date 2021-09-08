@@ -79,7 +79,6 @@ objects:
         restartPolicy: Always
     replicas: 1 
     triggers:
-      - type: "ConfigChange" 
       - type: "ImageChange" 
         imageChangeParams:
           automatic: true
@@ -143,7 +142,7 @@ objects:
       app: ${APP_NAME_DB}
   spec:
     runPolicy: "Serial" 
-    # triggers: 
+    triggers: 
     #   -
     #     type: "GitHub"
     #     github:
@@ -152,7 +151,9 @@ objects:
     #     generic:
     #       secret: ${SECRET}
     #   -
-    #     type: "ImageChange"
+      - type: "ImageChange"
+        imageChangeParams:
+          automatic: true 
     source: 
       git:
         uri: ${APP_GIT_URL}
